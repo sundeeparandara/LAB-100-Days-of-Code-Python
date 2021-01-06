@@ -43,3 +43,23 @@ elif BMI <35:
   print(f"Your BMI is {BMI}, you are obese.")
 else:
   print(f"Your BMI is {BMI}, you are clinically obese.")
+
+
+############################################
+
+# 🚨 Don't change the code below 👇
+year = int(input("Which year do you want to check? "))
+# 🚨 Don't change the code above 👆
+
+#Write your code below this line 👇
+
+if year % 4 != 0:
+  print('Not a Leap Year.')
+else:
+  if year % 100 != 0:
+    print('Leap Year.')
+  else:
+    if year % 400 == 0:
+      print('Leap Year.')
+    else:
+      print('Not a Leap Year.')
