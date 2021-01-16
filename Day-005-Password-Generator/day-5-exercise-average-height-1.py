@@ -13,4 +13,4 @@ for i in student_heights:
   summation +=i
   count+=1
 average = summation/count
-print(int(average))
+print(round(average))
