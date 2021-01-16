@@ -8,7 +8,9 @@ print(student_heights)
 #Write your code below this row 👇
 
 summation = 0
+count = 0
 for i in student_heights:
   summation +=i
-average = summation/len(student_heights)
+  count+=1
+average = summation/count
 print(int(average))
