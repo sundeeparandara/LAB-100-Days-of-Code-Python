@@ -1,11 +1,9 @@
-#works on both hurdle 1 & 2
 def turn_right():
     turn_left()
     turn_left()
     turn_left()
 
 def jump_hurdle():
-    move()
     turn_left()
     move()
     turn_right()
@@ -15,5 +13,8 @@ def jump_hurdle():
     turn_left()
     
 while at_goal() == False:
-    jump_hurdle()
+    if wall_in_front() == True:
+        jump_hurdle()
+    else:
+        move()
     
