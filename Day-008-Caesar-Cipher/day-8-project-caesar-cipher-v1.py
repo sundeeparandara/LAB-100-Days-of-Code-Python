@@ -51,7 +51,6 @@ def decrypt(text, shift):
 
 
 
-
 if direction == "encode":
   text = input("Type your message:\n").lower()
   shift = int(input("Type the shift number:\n"))
