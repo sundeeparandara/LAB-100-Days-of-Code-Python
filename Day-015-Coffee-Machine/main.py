@@ -1,8 +1,57 @@
-import numpy as np
+from machine import MENU
+from machine import resources
+
+machine_active = True
+instance_resources = resources
+instance_money = 0
+
+def print_current_resources():
+    print(f"Water: {instance_resources['water']}ml")
+    print(f"Milk: {instance_resources['milk']}ml")
+    print(f"Coffee: {instance_resources['coffee']}ml")
+    print(f"Money: ${instance_money}")
 
 
-arr = np.array([[1, 2], [3, 4]])
+def check_resource_availability(instance_resources, menu_item_ingredients):
+    resource_availability = True
+    for resource in menu_item_ingredients:
+        if instance_resources[resource] < menu_item_ingredients[resource]:
+            print(f"Sorry there is not enough {resource}")
+            resource_availability = False
+            return resource_availability
 
-print(arr)
 
-print(type(arr))
+
+
+
+def update_resources(instance_resources,menu_item):
+    return instance_resources
+
+def sum_coins_inserted(quarters, dimes, nickles, pennies):
+    total = quarters*0.25 + dimes*0.1 + nickles*0.05 + pennies*0.01
+    return total
+
+
+while machine_active:
+    instruction = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    if instruction == "off":
+        machine_active = False
+    elif instruction == "report":
+        print_current_resources()
+    elif instruction == "espresso" or instruction == "latte" or instruction == "cappuccino":
+        print("Please insert coins")
+        quarters = int(input("how many quarters?: "))
+        dimes = int(input("how many dimes?: "))
+        nickles = int(input("how many nickles?: "))
+        pennies = int(input("how many pennies?: "))
+        money_added = sum_coins_inserted(quarters, dimes, nickles, pennies)
+        money_required = MENU[instruction]['cost']
+        if money_added < money_required:
+            print("Not enough money")
+        else:
+            money_change = money_added - money_required
+            instance_money += money_required
+            if check_resource_availability(instance_resources, MENU[instruction]['ingredients']) == True:
+                # TODO 1. add code for resource consumption "update_resources"
+                # TODO 2. update def "update_resources"
+
