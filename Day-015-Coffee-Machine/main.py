@@ -18,14 +18,16 @@ def check_resource_availability(instance_resources, menu_item_ingredients):
         if instance_resources[resource] < menu_item_ingredients[resource]:
             print(f"Sorry there is not enough {resource}")
             resource_availability = False
-            return resource_availability
+            break
+    return resource_availability
 
 
-
-
-
-def update_resources(instance_resources,menu_item):
+def update_resources(instance_resources,menu_item_ingredients):
+    for resource in menu_item_ingredients:
+        resource_withdrawal = menu_item_ingredients[resource]
+        instance_resources[resource] = instance_resources[resource] - resource_withdrawal
     return instance_resources
+
 
 def sum_coins_inserted(quarters, dimes, nickles, pennies):
     total = quarters*0.25 + dimes*0.1 + nickles*0.05 + pennies*0.01
@@ -33,25 +35,25 @@ def sum_coins_inserted(quarters, dimes, nickles, pennies):
 
 
 while machine_active:
-    instruction = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    instruction = input("  What would you like? (espresso/latte/cappuccino): ").lower()
     if instruction == "off":
         machine_active = False
     elif instruction == "report":
         print_current_resources()
     elif instruction == "espresso" or instruction == "latte" or instruction == "cappuccino":
-        print("Please insert coins")
-        quarters = int(input("how many quarters?: "))
-        dimes = int(input("how many dimes?: "))
-        nickles = int(input("how many nickles?: "))
-        pennies = int(input("how many pennies?: "))
-        money_added = sum_coins_inserted(quarters, dimes, nickles, pennies)
-        money_required = MENU[instruction]['cost']
-        if money_added < money_required:
-            print("Not enough money")
-        else:
-            money_change = money_added - money_required
-            instance_money += money_required
-            if check_resource_availability(instance_resources, MENU[instruction]['ingredients']) == True:
-                # TODO 1. add code for resource consumption "update_resources"
-                # TODO 2. update def "update_resources"
-
+        if check_resource_availability(instance_resources, MENU[instruction]['ingredients']) == True:
+            print("Please insert coins.")
+            quarters = int(input("how many quarters?: "))
+            dimes = int(input("how many dimes?: "))
+            nickles = int(input("how many nickles?: "))
+            pennies = int(input("how many pennies?: "))
+            money_added = sum_coins_inserted(quarters, dimes, nickles, pennies)
+            money_required = MENU[instruction]['cost']
+            if money_added < money_required:
+                print("Not enough money")
+            else:
+                money_change = money_added - money_required
+                instance_money += money_required
+                instance_resources = update_resources(instance_resources, MENU[instruction]['ingredients'])
+                print(f"Here is ${money_change} in change")
+                print(f"Here is your {instruction} ☕ Enjoy!")
