@@ -35,7 +35,7 @@ def sum_coins_inserted(quarters, dimes, nickles, pennies):
 
 
 while machine_active:
-    instruction = input("  What would you like? (espresso/latte/cappuccino): ").lower()
+    instruction = input("  What would you like? (espresso/latte/cappuccino):  ").lower()
     if instruction == "off":
         machine_active = False
     elif instruction == "report":
