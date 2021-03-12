@@ -13,3 +13,6 @@ for question in question_data:
 quiz = QuizBrain(question_bank)
 #quiz.next_question()
 quiz.roll_questions()
+
+print("You have completed the quiz.")
+print(f"Your final score is {quiz.score} / {len(quiz.questions_list)}.")

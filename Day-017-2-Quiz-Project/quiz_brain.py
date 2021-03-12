@@ -17,6 +17,7 @@ class QuizBrain:
         else:
             print(f"Wrong. Your score is {self.score}/{len(self.questions_list)}.")
         print(f"The correct answer is : {correct_answer}")
+        print("\n")
 
     def roll_questions(self):
         while self.question_number < len(self.questions_list):
