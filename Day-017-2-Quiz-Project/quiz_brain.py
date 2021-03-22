@@ -12,8 +12,9 @@ class QuizBrain:
         self.question_number += 1
         user_reply = input(f"Q.{self.question_number}: {current_question} (True/False)?:")
         if user_reply.lower() == correct_answer.lower():
-            print(f"Correct. Your score is {self.score}/{len(self.questions_list)}.")
             self.score += 1
+            print(f"Correct. Your score is {self.score}/{len(self.questions_list)}.")
+
         else:
             print(f"Wrong. Your score is {self.score}/{len(self.questions_list)}.")
         print(f"The correct answer is : {correct_answer}")
