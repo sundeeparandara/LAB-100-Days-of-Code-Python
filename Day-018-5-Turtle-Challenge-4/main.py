@@ -5,8 +5,6 @@ turtle = Turtle()
 turtle.speed(10)
 turtle.width(10)
 
-
-
 directions = [0, 90, 180, 270, 360]
 
 turtle.shape("arrow")
