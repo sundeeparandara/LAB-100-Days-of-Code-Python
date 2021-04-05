@@ -2,6 +2,7 @@ import colorgram
 import random
 from turtle import Turtle, Screen
 
+#params
 rows = 5
 columns = 5
 space_between_dots = 100
@@ -28,7 +29,6 @@ for color in colors:
     rgb_list.append((r,g,b))
 
 #generate coordinates
-
 cood_list = []
 cood_x = 0
 offset_x = start_x + screen_pad
@@ -51,6 +51,7 @@ def draw_dots(radius,color_tuple):
     painter.end_fill()
     painter.penup()
 
+#generate screen
 screen = Screen()
 screen.bgcolor(0,0,0)
 screen.setup(width=screen_x,height=screen_y)
