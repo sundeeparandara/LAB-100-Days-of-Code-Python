@@ -1,4 +1,4 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from turtle_maker import TurtleMaker
 import random
 
@@ -13,13 +13,17 @@ turtle_vertical_spacing = (screen_height - 2*screen_border_pad)/(len(colors)-1)
 
 screen = Screen()
 screen.setup(width=screen_width, height=screen_height)
-user_bet = screen.textinput(title="Make you bet",prompt="Which turtle will win the race. Enter a color: ")
+user_bet = screen.textinput(title="Make your bet!",prompt="Which turtle will win the race? Enter a color: ")
 user_bet = user_bet.lower()
 
 turtle_squad = []
 for color in colors:
     turtle_squad.append(TurtleMaker(color,start_x,start_y))
     start_y += turtle_vertical_spacing
+
+scribbler = Turtle()
+scribbler.hideturtle()
+style = ('Courier', 30)
 
 within_bounds = True
 while within_bounds:
@@ -30,8 +34,10 @@ while within_bounds:
         the_winner = the_one.get_color()
         if user_bet == the_winner:
             print("You won the bet.")
+            scribbler.write("You won the bet.", font=style, align='center')
         else:
             print("You lost the bet.")
+            scribbler.write("You lost the bet.", font=style, align='center')
 
 
 screen.exitonclick()
