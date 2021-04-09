@@ -1,15 +1,16 @@
 from turtle import Screen, Turtle
 import time
 
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+INCREMENTS = 20
 
 class Snake:
 
     def __init__(self):
         self.increment = 20
         self.segments = []
-        self.snake_starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 
-        for pos in self.snake_starting_positions:
+        for pos in STARTING_POSITIONS:
             segment = Turtle("square")
             segment.penup()
             segment.color("white")
@@ -23,4 +24,4 @@ class Snake:
             new_x = self.segments[segment_id - 1].xcor()
             new_y = self.segments[segment_id - 1].ycor()
             self.segments[segment_id].goto(new_x, new_y)
-        self.segments[0].forward(self.increment)
+        self.segments[0].forward(INCREMENTS)
