@@ -41,16 +41,15 @@ screen.update()
 #         x_pos -= 20
 
 while game_is_on:
-    print(f"--- round {game_iteration} ---")
-    square_id = 1
-    for square in snake:
-        square.forward(block_increment)
-        square_pos = square.pos()
-        print(f"{square_id}: {square_pos}")
-        square_id += 1
-    game_iteration += 1
-    time.sleep(0.5)
     screen.update()
+    time.sleep(0.5)
+    for square_num in range((len(snake)-1),0,-1):
+        new_x = snake[square_num-1].xcor()
+        new_y = snake[square_num-1].ycor()
+        snake[square_num].goto(new_x,new_y)
+    snake[0].forward(block_increment)
+
+
 
 
 
