@@ -1,9 +1,11 @@
 from turtle import Screen, Turtle
+import time
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
+screen.tracer(0)
 
 snake_length = 3
 x_pos = 0
@@ -18,12 +20,13 @@ snake = []
 for _ in range(snake_length):
     square = Turtle("square")
     square.penup()
-    square.speed("fastest")
+    #square.speed("fastest")
     square.goto(x=x_pos, y=0)
     square.color("white")
     snake.append(square)
     x_pos -= 20
 
+screen.update()
 # #old movement logic
 # for i in range(10):
 #     x_head = block_increment*i
@@ -46,6 +49,8 @@ while game_is_on:
         print(f"{square_id}: {square_pos}")
         square_id += 1
     game_iteration += 1
+    time.sleep(0.5)
+    screen.update()
 
 
 
