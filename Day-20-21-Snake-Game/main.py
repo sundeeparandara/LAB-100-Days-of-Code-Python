@@ -10,6 +10,9 @@ x_pos = 0
 x_head = 0
 y_pos = 0
 block_increment = 20
+game_is_on = True
+game_iteration = 0
+square_id = 1
 snake = []
 
 for _ in range(snake_length):
@@ -21,31 +24,28 @@ for _ in range(snake_length):
     snake.append(square)
     x_pos -= 20
 
-
-for i in range(10):
-    x_head = block_increment*i
-    x_pos = x_head
-    j = 1
-    print(f"round {i}")
-    for square in snake:
-        square.goto(x_pos,y=0)
-        position = square.pos()
-        print(f"{j} : {position}")
-        j +=1
-        x_pos -= 20
-
+# #old movement logic
 # for i in range(10):
 #     x_head = block_increment*i
 #     x_pos = x_head
-#     print(x_pos)
-#     for _ in range(snake_length):
-#         square = Turtle("square")
-#         square.penup()
-#         square.color("white")
-#         square.goto(x=x_pos,y=0)
+#     j = 1
+#     print(f"round {i}")
+#     for square in snake:
+#         square.goto(x_pos,y=0)
+#         position = square.pos()
+#         print(f"{j} : {position}")
+#         j +=1
 #         x_pos -= 20
 
-
+while game_is_on:
+    print(f"--- round {game_iteration} ---")
+    square_id = 1
+    for square in snake:
+        square.forward(block_increment)
+        square_pos = square.pos()
+        print(f"{square_id}: {square_pos}")
+        square_id += 1
+    game_iteration += 1
 
 
 
