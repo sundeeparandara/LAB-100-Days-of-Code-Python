@@ -18,7 +18,7 @@ for i in range(snake_length):
     square.goto(x=x_pos,y=0)
     x_pos -= 20
 
-snake = []
+
 
 
 
