@@ -16,10 +16,10 @@ food = Food()
 score = Scoreboard()
 
 screen.listen()
-screen.onkey(snake.up, "Up")
-screen.onkey(snake.down, "Down")
-screen.onkey(snake.left, "Left")
-screen.onkey(snake.right, "Right")
+screen.onkey(snake.up, "w")
+screen.onkey(snake.down, "s")
+screen.onkey(snake.left, "a")
+screen.onkey(snake.right, "d")
 
 game_is_on = True
 while game_is_on:
@@ -41,8 +41,8 @@ while game_is_on:
         game_is_on = False
 
     #tail detection collision
-    for segment in range(1,len(snake.segments)):
-        if snake.head.distance(snake.segments[segment]) < 10:
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
             print("Game over. Snake Body Collision.")
             score.game_over()
             game_is_on = False
