@@ -33,4 +33,11 @@ while game_is_on:
         score.update_score()
         food.food_spawn()
 
+    #wall collision detection
+    if (snake.head.pos()[0] > 280) | (snake.head.pos()[0] < -280) | (snake.head.pos()[1] > 280) | (snake.head.pos()[1] < -280):
+        print("Game over. Wall Collision.")
+        score.game_over()
+        game_is_on = False
+
+
 screen.exitonclick()
