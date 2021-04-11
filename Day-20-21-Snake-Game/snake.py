@@ -31,7 +31,7 @@ class Snake:
             new_y = self.segments[segment_id - 1].ycor()
             self.segments[segment_id].goto(new_x, new_y)
         self.head.forward(INCREMENTS)
-        print(self.head.pos())
+        #print(self.head.pos())
 
     def up(self):
         if self.head.heading() != DOWN:
