@@ -24,4 +24,4 @@ class Scoreboard(Turtle):
     def write_scoreboard(self):
         self.clear()
         self.message = f"Score : {self.score}"
-        self.write(self.message, align="center",font=("arial",20,'bold'))
+        self.write(self.message, align="center",font=("Arial",20,"bold"))
