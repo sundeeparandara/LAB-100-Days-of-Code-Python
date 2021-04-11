@@ -16,11 +16,7 @@ class Snake:
 
 
         for pos in STARTING_POSITIONS:
-            segment = Turtle("square")
-            segment.penup()
-            segment.color("white")
-            segment.goto(pos)
-            self.segments.append(segment)
+            self.add_segment(pos)
 
         self.head = self.segments[0]
         #print(f"snake is {len(self.segments)} segment long")
@@ -32,6 +28,17 @@ class Snake:
             self.segments[segment_id].goto(new_x, new_y)
         self.head.forward(INCREMENTS)
         #print(self.head.pos())
+
+    def add_segment(self,pos):
+        segment = Turtle("square")
+        segment.penup()
+        segment.color("white")
+        segment.goto(pos)
+        self.segments.append(segment)
+
+    def extend_snake(self):
+        pos = self.segments[-1].pos()
+        self.add_segment(pos)
 
     def up(self):
         if self.head.heading() != DOWN:

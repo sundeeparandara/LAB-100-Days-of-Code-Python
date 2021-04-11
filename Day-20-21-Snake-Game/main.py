@@ -32,6 +32,7 @@ while game_is_on:
         #print("glorious food!!!")
         score.update_score()
         food.food_spawn()
+        snake.extend_snake()
 
     #wall collision detection
     if (snake.head.pos()[0] > 280) | (snake.head.pos()[0] < -280) | (snake.head.pos()[1] > 280) | (snake.head.pos()[1] < -280):
@@ -39,5 +40,11 @@ while game_is_on:
         score.game_over()
         game_is_on = False
 
+    #tail detection collision
+    for segment in range(1,len(snake.segments)):
+        if snake.head.distance(snake.segments[segment]) < 10:
+            print("Game over. Snake Body Collision.")
+            score.game_over()
+            game_is_on = False
 
 screen.exitonclick()
