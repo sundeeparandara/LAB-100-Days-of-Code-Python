@@ -10,10 +10,10 @@ class Ball(Turtle):
         self.penup()
 
 
-    def move(self,heading):
+    def move(self,heading,delay):
         self.setheading(heading)
         self.forward(20)
-        #time.sleep(0.5)
+        time.sleep(delay)
         print(f"Ball position: {self.position()}")
 
 

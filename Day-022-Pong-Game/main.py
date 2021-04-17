@@ -26,6 +26,7 @@ no_impact = True
 
 while game_is_on:
     screen.update()
+    ball.move(45,0.1)
 
 
 
