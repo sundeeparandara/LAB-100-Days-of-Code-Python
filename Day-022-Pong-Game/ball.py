@@ -1,5 +1,6 @@
 from turtle import Turtle
 import time
+import random
 
 class Ball(Turtle):
 
@@ -8,12 +9,26 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.penup()
+        self.x_increment = 10#*random.uniform(0,3)
+        self.y_increment = 10#*random.uniform(0,3)
 
 
-    def move(self,heading,delay):
-        self.setheading(heading)
-        self.forward(20)
-        time.sleep(delay)
+    def move(self):
+        time.sleep(0.05)
+        new_x = self.xcor() + self.x_increment
+        new_y = self.ycor() + self.y_increment
+        self.goto(new_x,new_y)
         print(f"Ball position: {self.position()}")
+
+    def wall_bounce(self):
+        self.y_increment *= -1
+
+    def paddle_bounce(self):
+        self.x_increment *= -1
+
+    def reset_ball(self):
+        time.sleep(1)
+        self.goto(0,0)
+        self.x_increment *= -1
 
 
