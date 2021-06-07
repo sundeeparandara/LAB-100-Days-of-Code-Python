@@ -11,7 +11,6 @@ Y_UPPER = 280
 X_LEFT = -350
 X_RIGHT = 350
 
-
 class CarManager():
     def __init__(self):
         #super().__init__()
@@ -66,9 +65,6 @@ class CarManager():
             else:
                 self.car_list.pop(i)
                 self.car_list.append(self.create_car_far_field())
-
-
-
 
 
     # def create_cars(self):
